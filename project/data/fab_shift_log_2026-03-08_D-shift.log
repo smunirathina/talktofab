@@ -1,0 +1,74 @@
+========================================================
+ FAB SHIFT LOG | SITE: Fab-12 Boise | DATE: 2026-03-08
+ SHIFT: D-Shift (00:00 - 08:00) | LEAD: Maria Santos
+ FAB NODE: 1z DRAM | ACTIVE LOTS: 47 | TOOLS: 21
+========================================================
+
+[00:00] INFO     HANDOVER from C-Shift (A.Tanaka). Status summary:
+                  - Tool CVD-PVD-019 recovering from prior pressure excursion (resolved 23:40).
+                  - LOT-A2291 queued at step 142, awaiting CVD-PVD-019 clearance.
+                  - No critical holds carried over from C-Shift.
+
+[00:12] INFO     Lot LOT-A2291 W24 loaded on ETCH-CVD-042. Recipe: RCP-DRAM-N2-ETCH-V12.
+
+[00:16] INFO     Wafer W24 etch complete. Result: PASS. Etch rate: 312.7 A/min. Uniformity: +/-1.2%.
+
+[00:35] WARNING  LITH-EUV-003: CD drift detected on wafers W18-W20 of LOT-A2291.
+                  Measured CD: 14.82nm vs target 14.00nm (sigma=2.74).
+                  APC alert APC-20260308-002 raised.
+                  Action: Lot placed on HOLD. Engineer T.Nakamura notified via pager.
+
+[01:10] INFO     Scheduled PM initiated on EUV-12. Technician K.Watanabe on-site.
+                  PM scope: collector mirror replacement, tin debris clean, dose calibration.
+                  Estimated duration: 6-8 hours. Tool state: PM.
+                  Lots rerouted to EUV-03 as backup lithography tool.
+
+[02:47] ERROR    CVD-PVD-019 wafer handler fault. Motion error code R-E014 on Axis 3.
+                  Fault: encoder position mismatch > 0.05mm mid-transfer.
+                  Wafer affected: LOT-A2292 W01 (step 142, M2 deposition - incomplete).
+                  Safety interlock engaged. Tool state: FAULT.
+                  Lot LOT-A2292 quarantined. Escalation ticket ESC-2026-0847 opened.
+
+[02:47] ERROR    Escalation paged to FSE (Applied Materials on-call).
+                  Notified: maint-eng@fab.com, shift-lead@fab.com, fse-amat@support.com
+
+[03:20] INFO     FSE (Applied Materials) dispatched. ETA: 04:15.
+
+[04:22] INFO     FSE on-site. Diagnosis confirmed: Axis-3 encoder slippage.
+                  Parts required: AMAT-ENC-AX3-001 (encoder module), AMAT-BRNG-014 (bearing x2).
+                  Repair in progress.
+
+[05:55] INFO     CVD-PVD-019 repair complete. Robot re-aligned and tested.
+                  Qualification lot WQ-305 loaded for requalification run.
+
+[06:05] INFO     CVD-PVD-019 qualification lot WQ-305 complete.
+                  Position accuracy: 0.01mm (spec <=0.02mm). PASS.
+                  Tool returned to production. Tool state: PRODUCTION.
+
+[06:30] WARNING  CMP-POL-007 slurry flow anomaly detected.
+                  Flow rate: 180 ml/min (spec: 200 ml/min +/-5%).
+                  Action: Slurry line flushed. Flow restored to 201 ml/min.
+                  No wafers affected. Preventive PM scheduled for 2026-03-18.
+
+[07:45] INFO     EUV-12 PM complete. Qualification wafer QW-EUV-042 results:
+                  Overlay: 0.98nm PASS (spec <=1.2nm)
+                  CD uniformity: +/-0.3nm PASS (spec <=0.5nm)
+                  Dose uniformity: 0.4% PASS (spec <=0.8%)
+                  Tool released to production. Tool state: PRODUCTION.
+
+[08:00] INFO     HANDOVER to E-Shift (D.Lee). Open action items:
+                  1. LOT-A2292 - Awaiting process engineer disposition (CVD-PVD-019 encoder fault, wafer W01 quarantined).
+                  2. LOT-A2291 wafers W18-W20 - Awaiting CD review by T.Nakamura (target by 10:00).
+                  3. CMP-POL-007 - Monitor slurry flow. Preventive PM scheduled 2026-03-18.
+                  4. EUV-12 - Post-PM monitoring: check CD control on first 5 lots.
+
+========================================================
+ SHIFT SUMMARY | D-Shift 2026-03-08
+ Tools down:      2 (EUV-12 PM=7.75h, CVD-PVD-019 fault=3.22h)
+ Total downtime:  10.97 equipment-hours
+ Lots affected:   LOT-A2291 (hold), LOT-A2292 (hold)
+ Wafers processed: 312
+ SPC violations:  3 (2 CRITICAL, 1 WARNING)
+ Faults:          1 unscheduled (CVD-PVD-019 R-E014)
+ Shift lead sign-off: M.Santos | 08:02
+========================================================

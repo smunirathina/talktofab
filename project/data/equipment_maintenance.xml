@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MaintenanceRecords xmlns="urn:semi:e10:maintenance" schema_version="E10-0318" fab="Fab-12-Boise">
+  <MaintenanceRecord>
+    <Tool id="EUV-12" type="EUV Lithography">
+      <Manufacturer>ASML</Manufacturer>
+      <Model>NXE:3600D</Model>
+      <Bay>EUV-Bay-1</Bay>
+    </Tool>
+    <Event type="Scheduled PM" id="PM-20260315-001">
+      <StartTime>2026-03-15T00:00:00Z</StartTime>
+      <EndTime>2026-03-15T07:45:00Z</EndTime>
+      <Downtime_hrs>7.75</Downtime_hrs>
+      <Technician>K.Watanabe</Technician>
+      <Tasks>
+        <Task seq="1">Replace EUV collector mirror</Task>
+        <Task seq="2">Clean tin debris from source vessel</Task>
+        <Task seq="3">Calibrate dose uniformity across slit</Task>
+        <Task seq="4">Verify overlay &lt;= 1.2nm post-PM</Task>
+        <Task seq="5">Check vacuum integrity</Task>
+      </Tasks>
+      <PartsReplaced>
+        <Part pn="ASML-COL-MIR-007" qty="1">EUV Collector Mirror</Part>
+      </PartsReplaced>
+      <PostPMMetrics>
+        <overlay_nm>0.98</overlay_nm>
+        <cd_uniformity_nm>0.3</cd_uniformity_nm>
+        <dose_uniformity_pct>0.4</dose_uniformity_pct>
+        <result>PASS</result>
+      </PostPMMetrics>
+      <Result>PASS</Result>
+      <NextPM_Due>2026-06-15</NextPM_Due>
+    </Event>
+  </MaintenanceRecord>
+  <MaintenanceRecord>
+    <Tool id="CVD-PVD-019" type="Metal Deposition">
+      <Manufacturer>Applied Materials</Manufacturer>
+      <Model>Endura 300</Model>
+      <Bay>Bay-4B</Bay>
+    </Tool>
+    <Event type="Unscheduled Repair" id="FAULT-20260308-001">
+      <StartTime>2026-03-08T02:47:00Z</StartTime>
+      <EndTime>2026-03-08T06:00:00Z</EndTime>
+      <Downtime_hrs>3.22</Downtime_hrs>
+      <Technician>FSE-AppliedMat-07</Technician>
+      <Tasks>
+        <Task seq="1">Diagnose wafer handler fault R-E014</Task>
+        <Task seq="2">Replace Axis-3 encoder</Task>
+        <Task seq="3">Re-align robot arm</Task>
+        <Task seq="4">Run qualification lot WQ-305</Task>
+      </Tasks>
+      <PartsReplaced>
+        <Part pn="AMAT-ENC-AX3-001" qty="1">Axis-3 Encoder Module</Part>
+        <Part pn="AMAT-BRNG-014" qty="2">Bearing Set Axis-3</Part>
+      </PartsReplaced>
+      <PostPMMetrics>
+        <position_accuracy_mm>0.01</position_accuracy_mm>
+        <repeatability_mm>0.005</repeatability_mm>
+        <result>PASS</result>
+      </PostPMMetrics>
+      <Result>PASS</Result>
+      <NextPM_Due>2026-04-10</NextPM_Due>
+    </Event>
+  </MaintenanceRecord>
+  <MaintenanceRecord>
+    <Tool id="ETCH-CVD-042" type="Plasma Etch">
+      <Manufacturer>Lam Research</Manufacturer>
+      <Model>Flex-E</Model>
+      <Bay>Bay-7A</Bay>
+    </Tool>
+    <Event type="Scheduled PM" id="PM-20260301-001">
+      <StartTime>2026-03-01T00:00:00Z</StartTime>
+      <EndTime>2026-03-01T05:30:00Z</EndTime>
+      <Downtime_hrs>5.50</Downtime_hrs>
+      <Technician>L.Rodriguez</Technician>
+      <Tasks>
+        <Task seq="1">Replace etch chamber liner</Task>
+        <Task seq="2">Clean focus ring</Task>
+        <Task seq="3">Replace ESC</Task>
+        <Task seq="4">Verify process uniformity</Task>
+      </Tasks>
+      <PartsReplaced>
+        <Part pn="LAM-LINER-042" qty="1">Chamber Liner</Part>
+        <Part pn="LAM-FOCRING-E" qty="1">Focus Ring</Part>
+      </PartsReplaced>
+      <PostPMMetrics>
+        <etch_rate_uniformity_pct>1.1</etch_rate_uniformity_pct>
+        <cd_bias_nm>0.2</cd_bias_nm>
+        <result>PASS</result>
+      </PostPMMetrics>
+      <Result>PASS</Result>
+      <NextPM_Due>2026-06-01</NextPM_Due>
+    </Event>
+  </MaintenanceRecord>
+</MaintenanceRecords>

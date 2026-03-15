@@ -1,0 +1,964 @@
+[
+  {
+    "timestamp": "2026-03-08T08:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 238.8,
+      "dose_mJ_cm2": 28.43,
+      "chuck_temp_C": -20.1,
+      "overlay_nm": 1.01,
+      "cd_nm": 13.97,
+      "wafer_stage_vibration_nm": 0.25
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T08:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 243.0,
+      "dose_mJ_cm2": 28.6,
+      "chuck_temp_C": -19.6,
+      "overlay_nm": 0.73,
+      "cd_nm": 14.14,
+      "wafer_stage_vibration_nm": 0.25
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T08:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 238.0,
+      "dose_mJ_cm2": 29.43,
+      "chuck_temp_C": -20.4,
+      "overlay_nm": 0.74,
+      "cd_nm": 14.19,
+      "wafer_stage_vibration_nm": 0.54
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T08:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 239.4,
+      "dose_mJ_cm2": 28.8,
+      "chuck_temp_C": -20.4,
+      "overlay_nm": 0.86,
+      "cd_nm": 13.54,
+      "wafer_stage_vibration_nm": 0.29
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T09:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 238.8,
+      "dose_mJ_cm2": 29.07,
+      "chuck_temp_C": -19.6,
+      "overlay_nm": 1.0,
+      "cd_nm": 13.41,
+      "wafer_stage_vibration_nm": 0.47
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T09:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 239.0,
+      "dose_mJ_cm2": 28.63,
+      "chuck_temp_C": -19.1,
+      "overlay_nm": 0.65,
+      "cd_nm": 14.25,
+      "wafer_stage_vibration_nm": 0.46
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T09:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 234.4,
+      "dose_mJ_cm2": 28.95,
+      "chuck_temp_C": -20.0,
+      "overlay_nm": 1.0,
+      "cd_nm": 14.32,
+      "wafer_stage_vibration_nm": 0.46
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T09:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 243.6,
+      "dose_mJ_cm2": 28.48,
+      "chuck_temp_C": -20.4,
+      "overlay_nm": 0.98,
+      "cd_nm": 14.12,
+      "wafer_stage_vibration_nm": 0.34
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T12:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 223.2,
+      "dose_mJ_cm2": 29.3,
+      "chuck_temp_C": -20.1,
+      "overlay_nm": 1.16,
+      "cd_nm": 13.75,
+      "wafer_stage_vibration_nm": 0.43
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T12:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 240.4,
+      "dose_mJ_cm2": 28.7,
+      "chuck_temp_C": -19.7,
+      "overlay_nm": 0.83,
+      "cd_nm": 13.71,
+      "wafer_stage_vibration_nm": 0.32
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T12:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 252.1,
+      "dose_mJ_cm2": 27.94,
+      "chuck_temp_C": -20.2,
+      "overlay_nm": 0.96,
+      "cd_nm": 14.2,
+      "wafer_stage_vibration_nm": 0.27
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T12:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 242.0,
+      "dose_mJ_cm2": 28.36,
+      "chuck_temp_C": -20.4,
+      "overlay_nm": 0.96,
+      "cd_nm": 14.43,
+      "wafer_stage_vibration_nm": 0.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T13:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 240.0,
+      "dose_mJ_cm2": 28.69,
+      "chuck_temp_C": -19.8,
+      "overlay_nm": 0.59,
+      "cd_nm": 13.71,
+      "wafer_stage_vibration_nm": 0.48
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T13:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 233.4,
+      "dose_mJ_cm2": 28.58,
+      "chuck_temp_C": -19.9,
+      "overlay_nm": 0.8,
+      "cd_nm": 14.16,
+      "wafer_stage_vibration_nm": 0.41
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T13:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 232.1,
+      "dose_mJ_cm2": 28.85,
+      "chuck_temp_C": -20.0,
+      "overlay_nm": 1.14,
+      "cd_nm": 14.57,
+      "wafer_stage_vibration_nm": 0.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T13:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W18",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 249.1,
+      "dose_mJ_cm2": 28.18,
+      "chuck_temp_C": -20.2,
+      "overlay_nm": 1.08,
+      "cd_nm": 14.21,
+      "wafer_stage_vibration_nm": 0.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T00:12:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 42.8,
+      "rf_power_W": 867.0,
+      "gas_CF4_sccm": 44.1,
+      "gas_CHF3_sccm": 15.0,
+      "gas_Ar_sccm": 199.8,
+      "chuck_temp_C": -20.0,
+      "etch_rate_A_per_min": 312.1,
+      "dc_bias_V": -133.1,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T00:27:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 42.9,
+      "rf_power_W": 837.0,
+      "gas_CF4_sccm": 46.6,
+      "gas_CHF3_sccm": 14.5,
+      "gas_Ar_sccm": 197.7,
+      "chuck_temp_C": -20.0,
+      "etch_rate_A_per_min": 312.2,
+      "dc_bias_V": -123.7,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T00:42:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 39.1,
+      "rf_power_W": 863.0,
+      "gas_CF4_sccm": 43.4,
+      "gas_CHF3_sccm": 14.6,
+      "gas_Ar_sccm": 203.2,
+      "chuck_temp_C": -20.5,
+      "etch_rate_A_per_min": 311.3,
+      "dc_bias_V": -127.8,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T00:57:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 41.7,
+      "rf_power_W": 848.0,
+      "gas_CF4_sccm": 43.8,
+      "gas_CHF3_sccm": 15.4,
+      "gas_Ar_sccm": 204.2,
+      "chuck_temp_C": -19.9,
+      "etch_rate_A_per_min": 318.6,
+      "dc_bias_V": -125.5,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T01:12:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 43.0,
+      "rf_power_W": 848.0,
+      "gas_CF4_sccm": 45.7,
+      "gas_CHF3_sccm": 15.0,
+      "gas_Ar_sccm": 203.1,
+      "chuck_temp_C": -19.6,
+      "etch_rate_A_per_min": 306.2,
+      "dc_bias_V": -128.8,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T01:27:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 44.1,
+      "rf_power_W": 862.0,
+      "gas_CF4_sccm": 46.0,
+      "gas_CHF3_sccm": 14.5,
+      "gas_Ar_sccm": 206.2,
+      "chuck_temp_C": -19.2,
+      "etch_rate_A_per_min": 313.7,
+      "dc_bias_V": -130.7,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T01:42:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 39.8,
+      "rf_power_W": 858.0,
+      "gas_CF4_sccm": 44.7,
+      "gas_CHF3_sccm": 16.0,
+      "gas_Ar_sccm": 200.6,
+      "chuck_temp_C": -20.1,
+      "etch_rate_A_per_min": 317.0,
+      "dc_bias_V": -129.5,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T01:57:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "tool_type": "Plasma Etch",
+    "lot_id": "LOT-A2291",
+    "wafer_id": "W24",
+    "process_step": "ETCH_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 41.2,
+      "rf_power_W": 834.0,
+      "gas_CF4_sccm": 42.9,
+      "gas_CHF3_sccm": 15.1,
+      "gas_Ar_sccm": 201.8,
+      "chuck_temp_C": -19.8,
+      "etch_rate_A_per_min": 309.2,
+      "dc_bias_V": -130.4,
+      "endpoint_detected": false
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T08:30:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 1.87,
+      "dep_temp_C": 349.1,
+      "dep_rate_A_per_min": 125.0,
+      "target_power_W": 3984.0,
+      "wafer_temp_C": 248.7,
+      "film_stress_MPa": -217.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T08:45:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.14,
+      "dep_temp_C": 343.2,
+      "dep_rate_A_per_min": 120.7,
+      "target_power_W": 3945.0,
+      "wafer_temp_C": 241.3,
+      "film_stress_MPa": -212.3
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T09:00:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.0,
+      "dep_temp_C": 344.7,
+      "dep_rate_A_per_min": 116.5,
+      "target_power_W": 3832.0,
+      "wafer_temp_C": 252.6,
+      "film_stress_MPa": -230.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T09:15:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.41,
+      "dep_temp_C": 351.3,
+      "dep_rate_A_per_min": 118.7,
+      "target_power_W": 4055.0,
+      "wafer_temp_C": 267.2,
+      "film_stress_MPa": -189.2
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T09:30:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 1.88,
+      "dep_temp_C": 356.7,
+      "dep_rate_A_per_min": 117.7,
+      "target_power_W": 4187.0,
+      "wafer_temp_C": 253.9,
+      "film_stress_MPa": -227.5
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T09:45:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.68,
+      "dep_temp_C": 359.3,
+      "dep_rate_A_per_min": 117.7,
+      "target_power_W": 3963.0,
+      "wafer_temp_C": 255.5,
+      "film_stress_MPa": -194.1
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T10:00:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.01,
+      "dep_temp_C": 358.7,
+      "dep_rate_A_per_min": 112.0,
+      "target_power_W": 4095.0,
+      "wafer_temp_C": 235.2,
+      "film_stress_MPa": -211.4
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-11T10:15:00Z",
+    "tool_id": "CVD-PVD-019",
+    "tool_type": "Metal Deposition",
+    "lot_id": "LOT-A2292",
+    "wafer_id": "W01",
+    "process_step": "M2_DEPOSITION",
+    "bay": "Bay-7A",
+    "sensors": {
+      "chamber_pressure_mTorr": 2.21,
+      "dep_temp_C": 345.4,
+      "dep_rate_A_per_min": 116.2,
+      "target_power_W": 3873.0,
+      "wafer_temp_C": 259.3,
+      "film_stress_MPa": -212.1
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T10:00:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 96.0,
+      "head_speed_rpm": 88.0,
+      "down_force_psi": 5.11,
+      "slurry_flow_ml_min": 190.1,
+      "removal_rate_A_min": 2798.0,
+      "friction_coeff": 0.359
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T10:15:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 94.0,
+      "head_speed_rpm": 89.0,
+      "down_force_psi": 4.5,
+      "slurry_flow_ml_min": 204.6,
+      "removal_rate_A_min": 2962.0,
+      "friction_coeff": 0.382
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T10:30:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 93.0,
+      "head_speed_rpm": 90.0,
+      "down_force_psi": 4.37,
+      "slurry_flow_ml_min": 190.9,
+      "removal_rate_A_min": 2917.0,
+      "friction_coeff": 0.388
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T10:45:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 92.0,
+      "head_speed_rpm": 90.0,
+      "down_force_psi": 4.55,
+      "slurry_flow_ml_min": 202.9,
+      "removal_rate_A_min": 2567.0,
+      "friction_coeff": 0.367
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T11:00:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 95.0,
+      "head_speed_rpm": 87.0,
+      "down_force_psi": 4.21,
+      "slurry_flow_ml_min": 202.5,
+      "removal_rate_A_min": 2744.0,
+      "friction_coeff": 0.357
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T11:15:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 94.0,
+      "head_speed_rpm": 89.0,
+      "down_force_psi": 4.34,
+      "slurry_flow_ml_min": 191.3,
+      "removal_rate_A_min": 2888.0,
+      "friction_coeff": 0.373
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T11:30:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 94.0,
+      "head_speed_rpm": 85.0,
+      "down_force_psi": 4.35,
+      "slurry_flow_ml_min": 192.7,
+      "removal_rate_A_min": 2785.0,
+      "friction_coeff": 0.378
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-12T11:45:00Z",
+    "tool_id": "CMP-POL-007",
+    "tool_type": "CMP Polishing",
+    "lot_id": "LOT-A2293",
+    "wafer_id": "W12",
+    "process_step": "CMP_STI",
+    "bay": "Bay-7A",
+    "sensors": {
+      "platen_speed_rpm": 97.0,
+      "head_speed_rpm": 87.0,
+      "down_force_psi": 4.51,
+      "slurry_flow_ml_min": 205.3,
+      "removal_rate_A_min": 2814.0,
+      "friction_coeff": 0.386
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T06:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 239.5,
+      "dose_mJ_cm2": 28.01,
+      "chuck_temp_C": -20.0,
+      "overlay_nm": 0.73,
+      "cd_nm": 14.05,
+      "wafer_stage_vibration_nm": 0.28
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T06:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 233.2,
+      "dose_mJ_cm2": 28.13,
+      "chuck_temp_C": -20.7,
+      "overlay_nm": 1.33,
+      "cd_nm": 13.73,
+      "wafer_stage_vibration_nm": 0.38
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T06:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 241.7,
+      "dose_mJ_cm2": 28.35,
+      "chuck_temp_C": -19.3,
+      "overlay_nm": 1.04,
+      "cd_nm": 14.12,
+      "wafer_stage_vibration_nm": 0.28
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T06:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 227.0,
+      "dose_mJ_cm2": 28.17,
+      "chuck_temp_C": -19.2,
+      "overlay_nm": 0.56,
+      "cd_nm": 14.14,
+      "wafer_stage_vibration_nm": 0.27
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T07:00:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 231.2,
+      "dose_mJ_cm2": 28.97,
+      "chuck_temp_C": -19.9,
+      "overlay_nm": 0.71,
+      "cd_nm": 14.07,
+      "wafer_stage_vibration_nm": 0.42
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T07:15:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 241.0,
+      "dose_mJ_cm2": 28.71,
+      "chuck_temp_C": -20.0,
+      "overlay_nm": 1.03,
+      "cd_nm": 14.41,
+      "wafer_stage_vibration_nm": 0.41
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T07:30:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 228.9,
+      "dose_mJ_cm2": 27.99,
+      "chuck_temp_C": -19.8,
+      "overlay_nm": 0.87,
+      "cd_nm": 14.1,
+      "wafer_stage_vibration_nm": 0.34
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-14T07:45:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "LOT-A2295",
+    "wafer_id": "W03",
+    "process_step": "LITHO_STI",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 237.2,
+      "dose_mJ_cm2": 28.29,
+      "chuck_temp_C": -19.9,
+      "overlay_nm": 0.73,
+      "cd_nm": 14.01,
+      "wafer_stage_vibration_nm": 0.23
+    },
+    "alarms": [],
+    "status": "PROCESSING"
+  },
+  {
+    "timestamp": "2026-03-08T12:20:00Z",
+    "tool_id": "EUV-12",
+    "tool_type": "EUV Lithography",
+    "lot_id": "L9821",
+    "wafer_id": "W24",
+    "process_step": "LITHO_GATE",
+    "bay": "EUV-Bay-1",
+    "sensors": {
+      "laser_power_W": 218.0,
+      "dose_mJ_cm2": 25.9,
+      "chuck_temp_C": -20.6,
+      "overlay_nm": 0.89,
+      "cd_nm": 13.58,
+      "wafer_stage_vibration_nm": 0.34
+    },
+    "alarms": [
+      {
+        "code": "ALM-LP-001",
+        "message": "Laser power below LCL",
+        "severity": "CRITICAL",
+        "threshold": 225.0
+      }
+    ],
+    "status": "ALARM"
+  }
+]

@@ -1,0 +1,218 @@
+[
+  {
+    "alert_id": "APC-20260308-001",
+    "timestamp": "2026-03-08T12:15:00Z",
+    "tool_id": "EUV-12",
+    "lot_id": "L9821",
+    "wafer_ids": [
+      "W24"
+    ],
+    "parameter": "laser_power_W",
+    "measured_value": 218.0,
+    "target_value": 240.0,
+    "usl": 255.0,
+    "lsl": 225.0,
+    "sigma": 3.1,
+    "rule_triggered": "Western Electric Rule 1",
+    "severity": "CRITICAL",
+    "action_taken": "TOOL_QUARANTINED",
+    "notified": [
+      "process-eng@fab.com",
+      "shift-lead@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-15T07:45:00Z",
+      "action": "Collector mirror replaced, tool re-qualified"
+    }
+  },
+  {
+    "alert_id": "APC-20260308-002",
+    "timestamp": "2026-03-08T12:20:00Z",
+    "tool_id": "EUV-12",
+    "lot_id": "LOT-A2291",
+    "wafer_ids": [
+      "W18",
+      "W19",
+      "W20"
+    ],
+    "parameter": "cd_nm",
+    "measured_value": 14.82,
+    "target_value": 14.0,
+    "usl": 14.5,
+    "lsl": 13.5,
+    "sigma": 2.74,
+    "rule_triggered": "Western Electric Rule 1",
+    "severity": "CRITICAL",
+    "action_taken": "LOT_HOLD",
+    "notified": [
+      "T.Nakamura@fab.com"
+    ],
+    "resolution": {
+      "status": "PENDING",
+      "resolved_at": null,
+      "action": "Awaiting process engineer disposition"
+    }
+  },
+  {
+    "alert_id": "APC-20260308-003",
+    "timestamp": "2026-03-08T12:15:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "lot_id": "LOT-A2291",
+    "wafer_ids": [
+      "W18",
+      "W19",
+      "W20"
+    ],
+    "parameter": "etch_rate_A_per_min",
+    "measured_value": 342.0,
+    "target_value": 312.0,
+    "usl": 340.0,
+    "lsl": 284.0,
+    "sigma": 3.45,
+    "rule_triggered": "Western Electric Rule 1",
+    "severity": "CRITICAL",
+    "action_taken": "LOT_QUARANTINED",
+    "notified": [
+      "process-eng@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-08T16:30:00Z",
+      "action": "MFC recalibrated, CF4 flow restored to 45 sccm"
+    }
+  },
+  {
+    "alert_id": "APC-20260309-001",
+    "timestamp": "2026-03-09T09:45:00Z",
+    "tool_id": "EUV-12",
+    "lot_id": "LOT-A2292",
+    "wafer_ids": [
+      "W01",
+      "W02"
+    ],
+    "parameter": "chuck_temp_C",
+    "measured_value": -17.2,
+    "target_value": -20.0,
+    "usl": -18.0,
+    "lsl": -22.0,
+    "sigma": 2.8,
+    "rule_triggered": "Western Electric Rule 2",
+    "severity": "WARNING",
+    "action_taken": "ENGINEER_NOTIFIED",
+    "notified": [
+      "T.Nakamura@fab.com",
+      "maint-eng@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-09T11:00:00Z",
+      "action": "Coolant loop flushed, valve PV-12 blockage cleared"
+    }
+  },
+  {
+    "alert_id": "APC-20260309-002",
+    "timestamp": "2026-03-09T14:20:00Z",
+    "tool_id": "CMP-POL-007",
+    "lot_id": "LOT-A2292",
+    "wafer_ids": [],
+    "parameter": "slurry_flow_ml_min",
+    "measured_value": 180.0,
+    "target_value": 200.0,
+    "usl": 210.0,
+    "lsl": 190.0,
+    "sigma": 2.1,
+    "rule_triggered": "Western Electric Rule 2",
+    "severity": "WARNING",
+    "action_taken": "SLURRY_LINE_FLUSHED",
+    "notified": [
+      "maint-eng@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-09T14:55:00Z",
+      "action": "Slurry line flushed, flow restored to 201 ml/min"
+    }
+  },
+  {
+    "alert_id": "APC-20260312-001",
+    "timestamp": "2026-03-12T14:30:00Z",
+    "tool_id": "EUV-12",
+    "lot_id": "LOT-A2293",
+    "wafer_ids": [
+      "W05",
+      "W06",
+      "W07"
+    ],
+    "parameter": "cd_nm",
+    "measured_value": 14.91,
+    "target_value": 14.0,
+    "usl": 14.5,
+    "lsl": 13.5,
+    "sigma": 3.2,
+    "rule_triggered": "Western Electric Rule 1",
+    "severity": "CRITICAL",
+    "action_taken": "LOT_HOLD",
+    "notified": [
+      "S.Chen@fab.com",
+      "process-eng@fab.com"
+    ],
+    "resolution": {
+      "status": "PENDING",
+      "resolved_at": null,
+      "action": "PM scheduled for 2026-03-15, mirror reflectivity at 87%"
+    }
+  },
+  {
+    "alert_id": "APC-20260313-001",
+    "timestamp": "2026-03-13T10:10:00Z",
+    "tool_id": "CVD-PVD-019",
+    "lot_id": "LOT-A2294",
+    "wafer_ids": [
+      "W03"
+    ],
+    "parameter": "dep_rate_A_per_min",
+    "measured_value": 108.5,
+    "target_value": 120.0,
+    "usl": 130.0,
+    "lsl": 110.0,
+    "sigma": 2.55,
+    "rule_triggered": "Western Electric Rule 2",
+    "severity": "WARNING",
+    "action_taken": "RECIPE_ADJUSTMENT",
+    "notified": [
+      "J.Kim@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-13T12:00:00Z",
+      "action": "Target power increased by 3%, rate nominal"
+    }
+  },
+  {
+    "alert_id": "APC-20260314-001",
+    "timestamp": "2026-03-14T08:00:00Z",
+    "tool_id": "ETCH-CVD-042",
+    "lot_id": "LOT-A2295",
+    "wafer_ids": [
+      "W01"
+    ],
+    "parameter": "rf_power_W",
+    "measured_value": 812.0,
+    "target_value": 850.0,
+    "usl": 890.0,
+    "lsl": 810.0,
+    "sigma": 2.3,
+    "rule_triggered": "Western Electric Rule 3",
+    "severity": "WARNING",
+    "action_taken": "AUTO_TUNE_RUN",
+    "notified": [
+      "maint-eng@fab.com"
+    ],
+    "resolution": {
+      "status": "RESOLVED",
+      "resolved_at": "2026-03-14T08:45:00Z",
+      "action": "RF auto-tune completed, power nominal at 849W"
+    }
+  }
+]

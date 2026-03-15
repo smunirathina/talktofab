@@ -1,0 +1,44 @@
+# ============================================================
+# TOOL SYSTEM LOG | TOOL: EUV-12 | DATE: 2026-03-08
+# TOOL TYPE: EUV Lithography (ASML NXE:3600D) | BAY: EUV-Bay-1
+# ============================================================
+
+2026-03-08T00:01:04Z [INFO ] Tool EUV-12 status: IDLE. Awaiting next lot assignment.
+2026-03-08T00:12:31Z [INFO ] Lot L9821 W22 loaded. Recipe: RCP-EUV-LITHO-V8. Wafer temp check: -20.1C OK.
+2026-03-08T00:12:55Z [INFO ] Pre-alignment started. Laser power ramp: 0W -> 240W.
+2026-03-08T00:13:26Z [INFO ] Exposure started. Dose target: 28.5 mJ/cm2. Laser power: 240.2W.
+2026-03-08T00:14:02Z [WARN ] Dose sensor variance: 0.6% (limit: 0.5%). Within recovery band. Auto-corrected.
+2026-03-08T00:15:51Z [INFO ] Exposure complete. CD measured: 13.98nm (target: 14.00nm). PASS.
+2026-03-08T00:16:12Z [INFO ] Post-exposure bake: 110C, 60s.
+2026-03-08T00:17:01Z [INFO ] Wafer W22 unloaded. Result: PASS. Overlay: 0.92nm.
+2026-03-08T08:00:14Z [INFO ] Shift change. Tool state: IDLE. 24 wafers processed since last PM.
+2026-03-08T08:42:10Z [INFO ] Lot L9821 W24 loaded. Recipe: RCP-EUV-LITHO-V8.
+2026-03-08T08:42:31Z [INFO ] Pre-alignment started. Laser power: 240.0W. Chuck temp: -20.0C.
+2026-03-08T08:43:15Z [INFO ] Exposure started. Dose: 28.5 mJ/cm2.
+2026-03-08T08:44:02Z [INFO ] Exposure complete. CD: 13.99nm. PASS. Overlay: 0.94nm.
+2026-03-08T08:44:20Z [INFO ] Wafer W24 unloaded. Result: PASS.
+2026-03-08T11:58:00Z [INFO ] Lot LOT-A2291 W18 loaded. Recipe: RCP-EUV-LITHO-V8. Step: LITHO_STI.
+2026-03-08T11:58:30Z [INFO ] Pre-alignment started. Laser power: 239.8W. Chuck temp: -20.1C.
+2026-03-08T11:59:10Z [INFO ] Exposure started.
+2026-03-08T11:59:55Z [WARN ] Laser power drift detected: 230.4W (LCL: 225.0W). Within spec.
+2026-03-08T12:00:30Z [INFO ] Wafer W18 unloaded. CD: 14.21nm. Marginal - flagged for review.
+2026-03-08T12:01:00Z [INFO ] Lot LOT-A2291 W19 loaded.
+2026-03-08T12:02:40Z [ERROR] LASER POWER BELOW LCL. Measured: 218.0W. LCL: 225.0W. Sigma: 3.10.
+                              Rule: Western Electric Rule 1. APC alert APC-20260308-001 raised.
+                              Tool state: ALARM. Wafer transfer aborted.
+2026-03-08T12:02:41Z [ERROR] Safety interlock engaged. Lot LOT-A2291 W19-W20 quarantined.
+2026-03-08T12:02:42Z [INFO ] Notifying process-eng@fab.com, shift-lead@fab.com.
+2026-03-08T12:03:00Z [INFO ] Root cause hypothesis: tin debris accumulation on collector mirror.
+                              Mirror reflectivity estimated at 88% of nominal (spec: >=92%).
+                              Source output degraded from 240W to 218W over last 3200 wafer cycles.
+2026-03-08T12:05:00Z [INFO ] Tool transitioned to PM_PENDING state. PM ticket PM-20260315-001 created.
+2026-03-08T12:10:00Z [INFO ] Lots on EUV-12 rerouted to EUV-03 by MES scheduler.
+2026-03-08T01:00:00Z [INFO ] PM started by K.Watanabe. Tool state: PM.
+2026-03-15T00:00:00Z [INFO ] PM-20260315-001 in progress. Step 1: Vent chamber.
+2026-03-15T01:30:00Z [INFO ] Collector mirror removed. Tin debris confirmed on mirror surface.
+2026-03-15T03:00:00Z [INFO ] New collector mirror (ASML-COL-MIR-007) installed.
+2026-03-15T04:30:00Z [INFO ] Source vessel cleaned. Tin debris removed.
+2026-03-15T06:00:00Z [INFO ] Dose calibration started.
+2026-03-15T07:00:00Z [INFO ] Qualification wafer QW-EUV-042 loaded.
+2026-03-15T07:30:00Z [INFO ] QW-EUV-042 results: overlay=0.98nm PASS, CD_uni=+/-0.3nm PASS, dose_uni=0.4% PASS.
+2026-03-15T07:45:00Z [INFO ] PM-20260315-001 complete. Tool released to PRODUCTION. Tool state: PRODUCTION.

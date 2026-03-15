@@ -1,0 +1,146 @@
+[
+  {
+    "lot_id": "LOT-A2291",
+    "product": "DRAM-DDR5-16Gb-1z",
+    "node": "1z nm",
+    "priority": "HOT",
+    "wafer_count": 25,
+    "started_at": "2026-03-08T06:00:00Z",
+    "current_step": {
+      "step_number": 142,
+      "step_name": "M2_METAL_DEPOSITION",
+      "tool_id": "CVD-PVD-019",
+      "started": "2026-03-15T08:30:00Z"
+    },
+    "completed_steps": 142,
+    "total_steps": 820,
+    "progress_pct": 17.3,
+    "status": "HOLD",
+    "yield_history": [
+      {
+        "step": "AFTER_LITHO",
+        "yield_pct": 97.8
+      },
+      {
+        "step": "AFTER_ETCH",
+        "yield_pct": 97.2
+      },
+      {
+        "step": "AFTER_CMP",
+        "yield_pct": 96.8
+      }
+    ],
+    "hold_flags": [
+      "APC_VIOLATION"
+    ],
+    "engineer_assigned": "T.Nakamura",
+    "rework_count": 0
+  },
+  {
+    "lot_id": "LOT-A2292",
+    "product": "DRAM-DDR5-16Gb-1z",
+    "node": "1z nm",
+    "priority": "HOT",
+    "wafer_count": 25,
+    "started_at": "2026-03-08T06:00:00Z",
+    "current_step": {
+      "step_number": 142,
+      "step_name": "M2_METAL_DEPOSITION",
+      "tool_id": "CVD-PVD-019",
+      "started": "2026-03-15T08:30:00Z"
+    },
+    "completed_steps": 142,
+    "total_steps": 820,
+    "progress_pct": 17.3,
+    "status": "HOLD",
+    "yield_history": [
+      {
+        "step": "AFTER_LITHO",
+        "yield_pct": 96.3
+      },
+      {
+        "step": "AFTER_ETCH",
+        "yield_pct": 95.8
+      },
+      {
+        "step": "AFTER_CMP",
+        "yield_pct": 95.2
+      }
+    ],
+    "hold_flags": [
+      "APC_VIOLATION"
+    ],
+    "engineer_assigned": "T.Nakamura",
+    "rework_count": 0
+  },
+  {
+    "lot_id": "LOT-A2293",
+    "product": "DRAM-DDR5-8Gb-1z",
+    "node": "1z nm",
+    "priority": "HOT",
+    "wafer_count": 25,
+    "started_at": "2026-03-08T06:00:00Z",
+    "current_step": {
+      "step_number": 198,
+      "step_name": "M2_METAL_DEPOSITION",
+      "tool_id": "CVD-PVD-019",
+      "started": "2026-03-15T08:30:00Z"
+    },
+    "completed_steps": 198,
+    "total_steps": 820,
+    "progress_pct": 24.1,
+    "status": "RUNNING",
+    "yield_history": [
+      {
+        "step": "AFTER_LITHO",
+        "yield_pct": 98.9
+      },
+      {
+        "step": "AFTER_ETCH",
+        "yield_pct": 98.1
+      },
+      {
+        "step": "AFTER_CMP",
+        "yield_pct": 97.5
+      }
+    ],
+    "hold_flags": [],
+    "engineer_assigned": "S.Chen",
+    "rework_count": 0
+  },
+  {
+    "lot_id": "L9821",
+    "product": "DRAM-DDR5-16Gb-1z",
+    "node": "1z nm",
+    "priority": "HOT",
+    "wafer_count": 25,
+    "started_at": "2026-03-08T06:00:00Z",
+    "current_step": {
+      "step_number": 390,
+      "step_name": "M2_METAL_DEPOSITION",
+      "tool_id": "CVD-PVD-019",
+      "started": "2026-03-15T08:30:00Z"
+    },
+    "completed_steps": 390,
+    "total_steps": 820,
+    "progress_pct": 47.6,
+    "status": "RUNNING",
+    "yield_history": [
+      {
+        "step": "AFTER_LITHO",
+        "yield_pct": 97.8
+      },
+      {
+        "step": "AFTER_ETCH",
+        "yield_pct": 97.2
+      },
+      {
+        "step": "AFTER_CMP",
+        "yield_pct": 96.9
+      }
+    ],
+    "hold_flags": [],
+    "engineer_assigned": "T.Nakamura",
+    "rework_count": 0
+  }
+]

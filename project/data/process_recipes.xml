@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecipeLibrary version="2.4" fab="Fab-12-Boise" approved_by="Process Engineering">
+  <Recipe id="RCP-DRAM-N2-ETCH-V12" process="Plasma Etch" approved_by="S.Chen" approved_date="2024-01-20">
+    <Description>STI Etch for 1z DRAM Node N2</Description>
+    <ToolType>Plasma Etch</ToolType>
+    <Steps>
+      <Step num="1" name="Stabilize">
+        <duration_s>30</duration_s>
+        <pressure_mTorr>40</pressure_mTorr>
+        <rf_W>0</rf_W>
+        <endpoint>None</endpoint>
+        <Gases>
+          <Gas name="Ar" sccm="200"/>
+        </Gases>
+        <EndpointMode>None</EndpointMode>
+      </Step>
+      <Step num="2" name="Main Etch">
+        <duration_s>120</duration_s>
+        <pressure_mTorr>42</pressure_mTorr>
+        <rf_W>850</rf_W>
+        <endpoint>OES</endpoint>
+        <Gases>
+          <Gas name="CF4" sccm="45"/>
+          <Gas name="CHF3" sccm="15"/>
+          <Gas name="Ar" sccm="200"/>
+        </Gases>
+        <EndpointMode>OES</EndpointMode>
+      </Step>
+      <Step num="3" name="Overetch">
+        <duration_s>20</duration_s>
+        <pressure_mTorr>42</pressure_mTorr>
+        <rf_W>600</rf_W>
+        <endpoint>Time</endpoint>
+        <Gases>
+          <Gas name="CF4" sccm="30"/>
+          <Gas name="Ar" sccm="200"/>
+        </Gases>
+        <EndpointMode>Time</EndpointMode>
+      </Step>
+      <Step num="4" name="Purge">
+        <duration_s>15</duration_s>
+        <pressure_mTorr>5</pressure_mTorr>
+        <rf_W>0</rf_W>
+        <endpoint>None</endpoint>
+        <Gases>
+          <Gas name="N2" sccm="500"/>
+        </Gases>
+        <EndpointMode>None</EndpointMode>
+      </Step>
+    </Steps>
+    <Spec>
+      <target_depth_nm>320</target_depth_nm>
+      <uniformity_pct>1.5</uniformity_pct>
+      <selectivity_SiO2_Si>15:1</selectivity_SiO2_Si>
+      <cd_bias_nm>-2.0</cd_bias_nm>
+    </Spec>
+  </Recipe>
+  <Recipe id="RCP-EUV-LITHO-V8" process="EUV Lithography" approved_by="T.Nakamura" approved_date="2025-06-15">
+    <Description>Gate layer patterning — 1z DRAM</Description>
+    <ToolType>EUV Lithography</ToolType>
+    <Steps>
+      <Step num="1" name="Pre-alignment">
+        <duration_s>45</duration_s>
+        <laser_power_W>240</laser_power_W>
+        <dose_mJ_cm2>0</dose_mJ_cm2>
+        <endpoint>None</endpoint>
+        <EndpointMode>None</EndpointMode>
+      </Step>
+      <Step num="2" name="Exposure">
+        <duration_s>8</duration_s>
+        <laser_power_W>240</laser_power_W>
+        <dose_mJ_cm2>28.5</dose_mJ_cm2>
+        <endpoint>Dose_sensor</endpoint>
+        <EndpointMode>Dose_sensor</EndpointMode>
+      </Step>
+      <Step num="3" name="Post-exposure bake">
+        <duration_s>60</duration_s>
+        <temp_C>110</temp_C>
+        <endpoint>Time</endpoint>
+        <EndpointMode>Time</EndpointMode>
+      </Step>
+    </Steps>
+    <Spec>
+      <target_cd_nm>14.0</target_cd_nm>
+      <cd_usl_nm>14.5</cd_usl_nm>
+      <cd_lsl_nm>13.5</cd_lsl_nm>
+      <overlay_nm>1.2</overlay_nm>
+      <dose_uniformity_pct>0.5</dose_uniformity_pct>
+    </Spec>
+  </Recipe>
+  <Recipe id="RCP-CVD-W-METAL-V5" process="Tungsten CVD" approved_by="J.Kim" approved_date="2025-03-01">
+    <Description>W plug fill for contact layer</Description>
+    <ToolType>Metal Deposition</ToolType>
+    <Steps>
+      <Step num="1" name="Pre-heat">
+        <duration_s>120</duration_s>
+        <temp_C>300</temp_C>
+        <pressure_mTorr>5.0</pressure_mTorr>
+        <endpoint>None</endpoint>
+        <Gases>
+          <Gas name="H2" sccm="500"/>
+        </Gases>
+        <EndpointMode>None</EndpointMode>
+      </Step>
+      <Step num="2" name="Nucleation layer">
+        <duration_s>30</duration_s>
+        <temp_C>350</temp_C>
+        <pressure_mTorr>4.0</pressure_mTorr>
+        <endpoint>None</endpoint>
+        <Gases>
+          <Gas name="WF6" sccm="25"/>
+          <Gas name="H2" sccm="400"/>
+          <Gas name="Ar" sccm="200"/>
+        </Gases>
+        <EndpointMode>None</EndpointMode>
+      </Step>
+      <Step num="3" name="Bulk fill">
+        <duration_s>180</duration_s>
+        <temp_C>395</temp_C>
+        <pressure_mTorr>40</pressure_mTorr>
+        <endpoint>Time</endpoint>
+        <Gases>
+          <Gas name="WF6" sccm="150"/>
+          <Gas name="H2" sccm="1000"/>
+          <Gas name="Ar" sccm="300"/>
+        </Gases>
+        <EndpointMode>Time</EndpointMode>
+      </Step>
+    </Steps>
+    <Spec>
+      <target_thickness_nm>80</target_thickness_nm>
+      <resistivity_uOhm_cm>12.0</resistivity_uOhm_cm>
+      <step_coverage_pct>95</step_coverage_pct>
+      <dep_rate_A_per_min>120</dep_rate_A_per_min>
+    </Spec>
+  </Recipe>
+</RecipeLibrary>
