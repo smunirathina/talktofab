@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fab Data Analysis Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  font-size: 14px;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.dashboard {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  padding: 28px 32px 32px;
+}
+
+/* ── Header ── */
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 22px;
+}
+.ttf-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 1;
+  justify-content: center;
+}
+.ttf-logo {
+  width: 42px; height: 42px;
+  background: #1e3a8a;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(37,99,235,0.22);
+}
+.ttf-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+}
+.ttf-name span { color: #2563eb; }
+.ttf-name small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.dash-header-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  min-width: 110px;
+}
+.hdr-pill {
+  font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500;
+}
+.hdr-pill-live { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+.hdr-pill-fab  { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.dash-header-spacer { min-width: 110px; }
+
+/* ── Filter bar ── */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.filter-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+}
+.filter-bar select, .filter-bar input[type="date"] {
+  font-size: 13px;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a2e;
+  cursor: pointer;
+  outline: none;
+  min-width: 130px;
+  transition: border-color .2s;
+}
+.filter-bar select:focus, .filter-bar input[type="date"]:focus {
+  border-color: #2563eb;
+}
+.btn-update {
+  margin-left: auto;
+  padding: 7px 22px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-update:hover { background: #1d4ed8; }
+.btn-update:active { background: #1e40af; }
+
+/* ── Chart section ── */
+.chart-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px 24px 16px;
+  margin-bottom: 20px;
+  background: #fff;
+  position: relative;
+}
+.chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+.chart-wrap {
+  position: relative;
+  height: 300px;
+}
+
+/* ── Tooltip override ── */
+.custom-tooltip {
+  position: absolute;
+  background: #1e293b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  pointer-events: none;
+  display: none;
+  white-space: nowrap;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.custom-tooltip .tt-date { font-weight: 600; margin-bottom: 3px; }
+.custom-tooltip .tt-val  { color: #93c5fd; }
+
+/* ── Bottom 3-col grid ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ── Panel shared ── */
+.panel {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+  background: #fff;
+}
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 14px;
+}
+
+/* ── SPC Alerts ── */
+.alert-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background .15s;
+  border-radius: 4px;
+  padding-left: 6px;
+}
+.alert-item:last-child { border-bottom: none; }
+.alert-item:hover { background: #f9fafb; }
+.alert-date { font-size: 11px; color: #9ca3af; margin-bottom: 3px; }
+.alert-text { font-size: 13px; color: #2563eb; font-weight: 500; }
+.alert-text .label { color: #374151; font-weight: 400; }
+
+/* ── Event Timeline ── */
+.timeline-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+.timeline-track {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 8px;
+}
+.timeline-line {
+  flex: 1;
+  height: 3px;
+  background: #d1d5db;
+  position: relative;
+}
+.timeline-line.filled { background: #2563eb; }
+.tl-node {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform .2s;
+  z-index: 2;
+}
+.tl-node:hover { transform: scale(1.12); }
+.tl-node.error  { background: #fee2e2; border: 2px solid #ef4444; }
+.tl-node.warn   { background: #fef9c3; border: 2px solid #f59e0b; }
+.tl-node.ok     { background: #dcfce7; border: 2px solid #22c55e; }
+.tl-arrow { font-size: 18px; color: #9ca3af; margin-left: 4px; }
+
+.tl-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 6px;
+}
+.tl-time { font-size: 11px; color: #6b7280; text-align: center; flex: 1; }
+
+.tl-tags {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 6px;
+}
+.tl-tag {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity .15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tl-tag:hover { opacity: 0.8; }
+.tl-tag.error { background: #ef4444; color: #fff; }
+.tl-tag.warn  { background: #f59e0b; color: #fff; }
+.tl-tag.info  { background: #3b82f6; color: #fff; }
+
+/* ── Event detail popup ── */
+.event-detail {
+  margin-top: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: #374151;
+  line-height: 1.6;
+  display: none;
+}
+.event-detail.visible { display: block; }
+.event-detail strong { color: #1a1a2e; }
+
+/* ── Recent Logs ── */
+.log-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.log-item:last-child { border-bottom: none; }
+.log-date { color: #9ca3af; font-size: 11px; margin-bottom: 2px; }
+.log-text .err  { color: #ef4444; font-weight: 600; }
+.log-text .warn { color: #f59e0b; font-weight: 600; }
+.log-text .info { color: #3b82f6; font-weight: 600; }
+
+/* ── Chat ── */
+.chat-section {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+.chat-messages {
+  min-height: 60px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f9fafb;
+}
+.chat-messages:empty { display: none; }
+.chat-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.chat-msg-av {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600;
+}
+.chat-msg-av.user { background: #dbeafe; color: #1d4ed8; }
+.chat-msg-av.bot  { background: #e0e7ff; color: #4338ca; }
+.chat-bubble {
+  font-size: 13px;
+  line-height: 1.55;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 88%;
+}
+.chat-bubble.user { background: #dbeafe; color: #1e3a5f; }
+.chat-bubble.bot  { background: #fff; border: 1px solid #e5e7eb; color: #1a1a2e; }
+.src-row { margin-top: 5px; display: flex; gap: 4px; flex-wrap: wrap; }
+.src-tag { font-size: 10px; padding: 1px 7px; border-radius: 4px; border: 1px solid #e5e7eb; color: #6b7280; background: #f9fafb; }
+
+/* ── Query selector bar ── */
+.query-selector-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+.query-selector-label {
+  font-size: 12px;
+  color: #6b7280;
+  white-space: nowrap;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.query-selector-label .qs-icon {
+  width: 18px; height: 18px;
+  background: #dbeafe;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 10px; color: #2563eb;
+}
+.query-select {
+  flex: 1;
+  font-size: 13px;
+  padding: 7px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #1a1a2e;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s;
+  appearance: auto;
+}
+.query-select:focus { border-color: #2563eb; }
+.btn-use-query {
+  padding: 7px 16px;
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .15s;
+}
+.btn-use-query:hover { background: #dbeafe; border-color: #93c5fd; }
+
+/* ── Suggestion pills ── */
+.suggestion-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 4px 18px 10px;
+  background: #f9fafb;
+  border-top: 1px solid #f3f4f6;
+}
+.pill-btn {
+  font-size: 11px;
+  padding: 4px 11px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.pill-btn:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+.chat-icon {
+  width: 28px; height: 28px;
+  background: #dbeafe; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: #2563eb; font-size: 14px;
+}
+.chat-input {
+  flex: 1;
+  font-size: 13px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  color: #1a1a2e;
+  background: #fff;
+  transition: border-color .2s;
+}
+.chat-input:focus { border-color: #2563eb; }
+.chat-input::placeholder { color: #9ca3af; }
+
+/* ── Autocomplete dropdown ── */
+.autocomplete-wrap { position: relative; flex: 1; }
+.autocomplete-list {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0; right: 0;
+  background: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  z-index: 100;
+  overflow: hidden;
+}
+.autocomplete-list.open { display: block; }
+.ac-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  transition: background .12s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ac-item:last-child { border-bottom: none; }
+.ac-item:hover, .ac-item.highlighted { background: #eff6ff; color: #1d4ed8; }
+.ac-item .ac-icon { font-size: 13px; flex-shrink: 0; }
+.ac-item .ac-text { flex: 1; line-height: 1.4; }
+.ac-item .ac-badge {
+  font-size: 10px; padding: 1px 7px; border-radius: 10px;
+  background: #e0e7ff; color: #4338ca; flex-shrink: 0;
+}
+
+.btn-send {
+  padding: 8px 20px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.btn-send:hover { background: #1d4ed8; }
+
+/* ── Thinking dots ── */
+.thinking { display: flex; gap: 4px; align-items: center; }
+.td { width: 6px; height: 6px; border-radius: 50%; background: #9ca3af; animation: tdbounce 1.2s infinite; }
+.td:nth-child(2) { animation-delay: .2s; }
+.td:nth-child(3) { animation-delay: .4s; }
+@keyframes tdbounce { 0%,80%,100%{transform:translateY(0);opacity:.3} 40%{transform:translateY(-4px);opacity:1} }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="dash-header">
+    <div class="dash-header-spacer"></div>
+    <div class="ttf-brand">
+      <!-- Icon: wafer/chip cross-section -->
+      <div class="ttf-logo">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Wafer circle -->
+          <circle cx="13" cy="13" r="11" stroke="#93c5fd" stroke-width="1.2" fill="none"/>
+          <!-- Die grid lines -->
+          <line x1="7" y1="4"  x2="7"  y2="22" stroke="#60a5fa" stroke-width="0.8"/>
+          <line x1="13" y1="2" x2="13" y2="24" stroke="#60a5fa" stroke-width="0.8"/>
+          <line x1="19" y1="4" x2="19" y2="22" stroke="#60a5fa" stroke-width="0.8"/>
+          <line x1="4"  y1="7"  x2="22" y2="7"  stroke="#60a5fa" stroke-width="0.8"/>
+          <line x1="2"  y1="13" x2="24" y2="13" stroke="#60a5fa" stroke-width="0.8"/>
+          <line x1="4"  y1="19" x2="22" y2="19" stroke="#60a5fa" stroke-width="0.8"/>
+          <!-- Centre die highlight -->
+          <rect x="10" y="10" width="6" height="6" rx="1" fill="#3b82f6" opacity="0.9"/>
+          <!-- Chat bubble dot in centre die -->
+          <circle cx="13" cy="13" r="1.2" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="ttf-name">
+        Talk to <span>Fab</span>
+        <small>Fab Data Analysis Dashboard</small>
+      </div>
+    </div>
+    <div class="dash-header-badge">
+      <span class="hdr-pill hdr-pill-live">&#9679; Live</span>
+      <span class="hdr-pill hdr-pill-fab">Fab-12 Boise</span>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>Tool ID:</label>
+      <select id="sel-tool" onchange="updateDashboard()">
+        <option>EUV-12</option>
+        <option>EUV-03</option>
+        <option>ETCH-CVD-042</option>
+        <option>CVD-PVD-019</option>
+        <option>CMP-POL-007</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Parameter:</label>
+      <select id="sel-param" onchange="updateDashboard()">
+        <option>Laser Power</option>
+        <option>Etch Rate</option>
+        <option>Chamber Pressure</option>
+        <option>Chuck Temp</option>
+        <option>RF Power</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Lot ID:</label>
+      <select id="sel-lot" onchange="updateDashboard()">
+        <option>L9821</option>
+        <option>LOT-A2291</option>
+        <option>LOT-A2292</option>
+        <option>LOT-A2293</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Date Range:</label>
+      <input type="date" id="sel-date" value="2026-03-01" onchange="updateDashboard()"/>
+    </div>
+    <button class="btn-update" onclick="updateDashboard()">Update</button>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-section">
+    <div class="chart-title" id="chart-title">Laser Power Over Time</div>
+    <div class="chart-wrap">
+      <canvas id="mainChart"></canvas>
+      <div class="custom-tooltip" id="customTooltip">
+        <div class="tt-date" id="tt-date"></div>
+        <div class="tt-val" id="tt-val"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Grid -->
+  <div class="bottom-grid">
+
+    <!-- SPC Alerts -->
+    <div class="panel">
+      <div class="panel-title">SPC Alerts</div>
+      <div id="spc-alerts">
+        <div class="alert-item" onclick="chatAsk('Tell me more about the Etch Rate Out of Control alert on 03/08/2026')">
+          <div class="alert-date">03/08/2026 12:15 PM</div>
+          <div class="alert-text">SPC Alert: <span class="label">Etch Rate Out of Control</span></div>
+        </div>
+        <div class="alert-item" onclick="chatAsk('What caused the Temperature Spike alert on 03/09/2026?')">
+          <div class="alert-date">03/09/2026 09:45 AM</div>
+          <div class="alert-text">SPC Alert: <span class="label">Temperature Spike</span></div>
+        </div>
+        <div class="alert-item" onclick="chatAsk('Explain the CD Drift alert on 03/12/2026')">
+          <div class="alert-date">03/12/2026 02:30 PM</div>
+          <div class="alert-text">SPC Alert: <span class="label">CD Drift Detected</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Timeline -->
+    <div class="panel">
+      <div class="panel-title">Event Timeline</div>
+      <div class="timeline-wrap">
+        <div class="timeline-track">
+          <div class="tl-node error" onclick="showEvent('error')" title="Etch Rate Alarm">⚠</div>
+          <div class="timeline-line filled"></div>
+          <div class="tl-node warn" onclick="showEvent('warn')" title="Laser Power Fluctuation">▶</div>
+          <div class="timeline-line filled"></div>
+          <div class="tl-node ok" onclick="showEvent('ok')" title="System Standby">✔</div>
+          <div class="tl-arrow">→</div>
+        </div>
+        <div class="tl-labels">
+          <div class="tl-time">12:15 PM</div>
+          <div class="tl-time">12:25 PM</div>
+          <div class="tl-time">12:30 PM</div>
+        </div>
+        <div class="tl-tags">
+          <div class="tl-tag error" onclick="showEvent('error')">Etch Rate Alarm</div>
+          <div class="tl-tag warn"  onclick="showEvent('warn')">Laser Power Fluctuation</div>
+          <div class="tl-tag info"  onclick="showEvent('ok')">System Standby</div>
+        </div>
+        <div class="event-detail" id="event-detail"></div>
+      </div>
+    </div>
+
+    <!-- Recent Log Entries -->
+    <div class="panel">
+      <div class="panel-title">Recent Log Entries</div>
+      <div id="log-entries">
+        <div class="log-item">
+          <div class="log-date">03/08/2026 12:20 PM</div>
+          <div class="log-text"><span class="err">ERROR:</span> Laser power fluctuation detected</div>
+        </div>
+        <div class="log-item">
+          <div class="log-date">03/08/2026 12:25 PM</div>
+          <div class="log-text"><span class="warn">WARN:</span> Beam alignment drift observed</div>
+        </div>
+        <div class="log-item">
+          <div class="log-date">03/08/2026 12:30 PM</div>
+          <div class="log-text"><span class="info">INFO:</span> System switched to standby mode</div>
+        </div>
+        <div class="log-item">
+          <div class="log-date">03/09/2026 09:42 AM</div>
+          <div class="log-text"><span class="warn">WARN:</span> Chuck temperature above nominal</div>
+        </div>
+        <div class="log-item">
+          <div class="log-date">03/12/2026 02:28 PM</div>
+          <div class="log-text"><span class="err">ERROR:</span> CD measurement out of spec</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Chat -->
+  <div class="chat-section">
+    <div class="chat-messages" id="chat-messages"></div>
+
+    <!-- Query selector row -->
+    <div class="query-selector-bar">
+      <div class="query-selector-label">
+        <span class="qs-icon">&#9660;</span>
+        Sample queries:
+      </div>
+      <select class="query-select" id="query-select" onchange="applyQuerySelect()">
+        <option value="">&#8212; pick a question &#8212;</option>
+        <option value="What caused the laser power fluctuation on EUV-12 last week?">What caused the laser power fluctuation on EUV-12 last week?</option>
+        <option value="Which lots were affected by the etch rate out of control alert on 03/08/2026?">Which lots were affected by the etch rate alert on 03/08/2026?</option>
+        <option value="What was the root cause of the temperature spike on EUV-12 on 03/09/2026?">What was the root cause of the temperature spike on 03/09/2026?</option>
+        <option value="Show me all SPC violations for tool EUV-12 in the last 7 days">Show me all SPC violations for EUV-12 in the last 7 days</option>
+        <option value="What action was taken after the CD drift was detected on 03/12/2026?">What action was taken after the CD drift on 03/12/2026?</option>
+      </select>
+      <button class="btn-use-query" onclick="submitQuerySelect()">Ask &#8599;</button>
+    </div>
+
+    <!-- Quick pill shortcuts -->
+    <div class="suggestion-pills">
+      <span style="font-size:11px;color:#9ca3af;align-self:center;margin-right:2px;">Quick:</span>
+      <button class="pill-btn" onclick="chatAsk('What caused the laser power fluctuation on EUV-12 last week?')">Laser power fluctuation</button>
+      <button class="pill-btn" onclick="chatAsk('Which lots were affected by the etch rate out of control alert on 03/08/2026?')">Lots affected &#8212; etch alarm</button>
+      <button class="pill-btn" onclick="chatAsk('What was the root cause of the temperature spike on EUV-12 on 03/09/2026?')">Temperature spike cause</button>
+      <button class="pill-btn" onclick="chatAsk('Show me all SPC violations for tool EUV-12 in the last 7 days')">All SPC violations</button>
+      <button class="pill-btn" onclick="chatAsk('What action was taken after the CD drift was detected on 03/12/2026?')">CD drift action</button>
+    </div>
+
+    <!-- Free-type input with autocomplete -->
+    <div class="chat-input-row">
+      <div class="chat-icon">&#128172;</div>
+      <div class="autocomplete-wrap">
+        <div class="autocomplete-list" id="ac-list"></div>
+        <input class="chat-input" id="chat-input"
+          placeholder="Type a question or pick one above..."
+          autocomplete="off"
+          oninput="onChatInput(this.value)"
+          onkeydown="onChatKeydown(event)"/>
+      </div>
+      <button class="btn-send" onclick="sendChat()">Send</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Dataset definitions ──
+const datasets = {
+  'Laser Power': {
+    label: 'Laser Power (Watts)',
+    yLabel: 'Laser Power (Watts)',
+    warn: 210, error: 240,
+    base: 228, amp: 12, noise: 7,
+    unit: 'Watts'
+  },
+  'Etch Rate': {
+    label: 'Etch Rate (Å/min)',
+    yLabel: 'Etch Rate (Å/min)',
+    warn: 300, error: 340,
+    base: 312, amp: 18, noise: 9,
+    unit: 'Å/min'
+  },
+  'Chamber Pressure': {
+    label: 'Chamber Pressure (mTorr)',
+    yLabel: 'Chamber Pressure (mTorr)',
+    warn: 38, error: 46,
+    base: 42, amp: 4, noise: 2,
+    unit: 'mTorr'
+  },
+  'Chuck Temp': {
+    label: 'Chuck Temperature (°C)',
+    yLabel: 'Chuck Temp (°C)',
+    warn: -22, error: -18,
+    base: -20, amp: 2, noise: 1,
+    unit: '°C'
+  },
+  'RF Power': {
+    label: 'RF Power (W)',
+    yLabel: 'RF Power (W)',
+    warn: 780, error: 870,
+    base: 850, amp: 30, noise: 15,
+    unit: 'W'
+  }
+};
+
+// ── Generate time-series data ──
+function makeLabels() {
+  const labels = [];
+  const d = new Date('2026-03-01');
+  for (let i = 0; i < 70; i++) {
+    const dd = new Date(d);
+    dd.setHours(8 + Math.floor(i * 0.35));
+    dd.setDate(d.getDate() + Math.floor(i / 7));
+    const mo = dd.toLocaleString('en-US', { month: 'short' });
+    const day = dd.getDate();
+    labels.push(`${mo} ${day} 2026`);
+  }
+  return labels;
+}
+
+function makeData(cfg) {
+  const vals = [];
+  for (let i = 0; i < 70; i++) {
+    let v = cfg.base + Math.sin(i * 0.18) * cfg.amp + (Math.random() - 0.5) * cfg.noise;
+    if (i === 25) v = cfg.error + 18;
+    if (i === 45) v = cfg.error + 8;
+    vals.push(parseFloat(v.toFixed(1)));
+  }
+  return vals;
+}
+
+const timeLabels = makeLabels();
+let currentData = makeData(datasets['Laser Power']);
+let currentCfg  = datasets['Laser Power'];
+
+// ── Chart ──
+const ctx = document.getElementById('mainChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: timeLabels,
+    datasets: [{
+      label: 'Laser Power (Watts)',
+      data: currentData,
+      borderColor: '#2563eb',
+      backgroundColor: 'rgba(37,99,235,0.06)',
+      borderWidth: 2,
+      pointRadius: 2,
+      pointHoverRadius: 6,
+      pointBackgroundColor: ctx => {
+        const v = ctx.raw;
+        if (v >= currentCfg.error) return '#ef4444';
+        if (v >= currentCfg.warn)  return '#f59e0b';
+        return '#2563eb';
+      },
+      fill: false,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        enabled: false,
+        external: externalTooltip
+      },
+      annotation: {
+        annotations: {
+          errorLine: {
+            type: 'line', yMin: 240, yMax: 240,
+            borderColor: 'rgba(239,68,68,0.7)',
+            borderWidth: 1.5, borderDash: [6, 4],
+            label: { display: true, content: 'Error Threshold', position: 'end', color: '#ef4444', font: { size: 11 }, backgroundColor: 'transparent' }
+          },
+          warnLine: {
+            type: 'line', yMin: 210, yMax: 210,
+            borderColor: 'rgba(239,68,68,0.45)',
+            borderWidth: 1, borderDash: [4, 4],
+            label: { display: true, content: 'Warning Zone', position: 'start', color: '#ef4444', font: { size: 11 }, backgroundColor: 'transparent' }
+          },
+          warnBox: {
+            type: 'box', yMin: 210, yMax: 240,
+            backgroundColor: 'rgba(239,68,68,0.06)',
+            borderWidth: 0
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          maxTicksLimit: 10,
+          font: { size: 11 },
+          color: '#9ca3af',
+          maxRotation: 0
+        },
+        grid: { color: 'rgba(0,0,0,0.04)' }
+      },
+      y: {
+        title: { display: true, text: 'Laser Power (Watts)', font: { size: 11 }, color: '#6b7280' },
+        ticks: { font: { size: 11 }, color: '#9ca3af' },
+        grid: { color: 'rgba(0,0,0,0.05)' }
+      }
+    }
+  }
+});
+
+// ── External tooltip ──
+function externalTooltip(context) {
+  const tt = document.getElementById('customTooltip');
+  const { chart, tooltip } = context;
+  if (tooltip.opacity === 0) { tt.style.display = 'none'; return; }
+  const dp = tooltip.dataPoints[0];
+  const label = dp.label;
+  const val   = dp.raw;
+  document.getElementById('tt-date').textContent = label;
+  document.getElementById('tt-val').textContent  = `${currentCfg.label.split(' (')[0]}: ${val} ${currentCfg.unit}`;
+  const pos = chart.canvas.getBoundingClientRect();
+  const cPos = chart.canvas.parentElement.getBoundingClientRect();
+  tt.style.display = 'block';
+  let left = tooltip.caretX + 12;
+  if (left + 200 > chart.width) left = tooltip.caretX - 180;
+  tt.style.left = left + 'px';
+  tt.style.top  = (tooltip.caretY - 20) + 'px';
+}
+
+// ── Update dashboard ──
+function updateDashboard() {
+  const param = document.getElementById('sel-param').value;
+  const tool  = document.getElementById('sel-tool').value;
+  const lot   = document.getElementById('sel-lot').value;
+  const cfg   = datasets[param];
+  currentCfg  = cfg;
+
+  document.getElementById('chart-title').textContent = `${param} Over Time`;
+  const newData = makeData(cfg);
+  currentData = newData;
+
+  chart.data.datasets[0].label = cfg.label;
+  chart.data.datasets[0].data  = newData;
+  chart.data.datasets[0].pointBackgroundColor = ctx => {
+    const v = ctx.raw;
+    if (v >= cfg.error) return '#ef4444';
+    if (v >= cfg.warn)  return '#f59e0b';
+    return '#2563eb';
+  };
+  chart.options.scales.y.title.text = cfg.yLabel;
+  chart.options.plugins.annotation.annotations.errorLine.yMin = cfg.error;
+  chart.options.plugins.annotation.annotations.errorLine.yMax = cfg.error;
+  chart.options.plugins.annotation.annotations.warnLine.yMin  = cfg.warn;
+  chart.options.plugins.annotation.annotations.warnLine.yMax  = cfg.warn;
+  chart.options.plugins.annotation.annotations.warnBox.yMin   = cfg.warn;
+  chart.options.plugins.annotation.annotations.warnBox.yMax   = cfg.error;
+  chart.update();
+
+  updateLogs(param, tool);
+  updateAlerts(param, tool, lot);
+}
+
+// ── Dynamic log entries ──
+const logTemplates = {
+  'Laser Power':       [['ERROR','Laser power fluctuation detected'],['WARN','Beam alignment drift observed'],['INFO','System switched to standby mode'],['WARN','Source power below nominal'],['INFO','Dose calibration completed']],
+  'Etch Rate':         [['ERROR','Etch rate out of control — σ violation'],['WARN','Uniformity drift on wafer edge'],['INFO','Recipe endpoint detected'],['WARN','CF4 flow variance observed'],['INFO','Chamber purge complete']],
+  'Chamber Pressure':  [['ERROR','Pressure spike: 48.7 mTorr'],['WARN','Throttle valve response slow'],['INFO','Pressure stabilized at target'],['WARN','Vacuum seal integrity check due'],['INFO','Vent sequence completed']],
+  'Chuck Temp':        [['ERROR','Chuck temp above spec limit'],['WARN','Coolant flow fluctuation'],['INFO','Temperature nominal after adjustment'],['WARN','Thermal gradient across wafer'],['INFO','Chuck re-calibration complete']],
+  'RF Power':          [['ERROR','RF power instability detected'],['WARN','Impedance mismatch observed'],['INFO','Auto-tune completed'],['WARN','Reflected power > 5%'],['INFO','Plasma ignition confirmed']]
+};
+const logDates = ['03/08/2026 12:20 PM','03/08/2026 12:25 PM','03/08/2026 12:30 PM','03/09/2026 09:42 AM','03/12/2026 02:28 PM'];
+const logClass = { 'ERROR':'err', 'WARN':'warn', 'INFO':'info' };
+
+function updateLogs(param, tool) {
+  const entries = logTemplates[param] || logTemplates['Laser Power'];
+  document.getElementById('log-entries').innerHTML = entries.map((e, i) =>
+    `<div class="log-item"><div class="log-date">${logDates[i]}</div><div class="log-text"><span class="${logClass[e[0]]}">${e[0]}:</span> ${e[1]}</div></div>`
+  ).join('');
+}
+
+// ── Dynamic alerts ──
+const alertTemplates = {
+  'Laser Power':      [['03/08/2026 12:15 PM','Laser Power Out of Control'],['03/09/2026 09:45 AM','Dose Uniformity Violation'],['03/12/2026 02:30 PM','Beam Alignment Drift']],
+  'Etch Rate':        [['03/08/2026 12:15 PM','Etch Rate Out of Control'],['03/09/2026 09:45 AM','Temperature Spike'],['03/12/2026 02:30 PM','CD Drift Detected']],
+  'Chamber Pressure': [['03/08/2026 10:00 AM','Pressure Excursion Rule 1'],['03/10/2026 03:15 PM','Throttle Valve Fault'],['03/13/2026 08:00 AM','Base Pressure Violation']],
+  'Chuck Temp':       [['03/08/2026 11:30 AM','Chuck Temp Rule 2 Violation'],['03/09/2026 04:00 PM','Coolant Flow Anomaly'],['03/14/2026 09:20 AM','Thermal Map Out of Spec']],
+  'RF Power':         [['03/07/2026 02:45 PM','RF Instability Detected'],['03/10/2026 11:10 AM','Impedance Mismatch Alarm'],['03/13/2026 05:30 PM','Reflected Power Alert']]
+};
+
+function updateAlerts(param, tool, lot) {
+  const alerts = alertTemplates[param] || alertTemplates['Etch Rate'];
+  document.getElementById('spc-alerts').innerHTML = alerts.map(a =>
+    `<div class="alert-item" onclick="chatAsk('Tell me about the ${a[1]} alert on ${a[0]} for tool ${tool}, lot ${lot}')">
+      <div class="alert-date">${a[0]}</div>
+      <div class="alert-text">SPC Alert: <span class="label">${a[1]}</span></div>
+    </div>`
+  ).join('');
+}
+
+// ── Event timeline ──
+const eventDetails = {
+  error: { title: 'Etch Rate Alarm — 12:15 PM', text: 'Etch rate exceeded UCL at 342 Å/min (spec: ≤320 Å/min). Western Electric Rule 1 triggered. Lot quarantined, process engineer notified. APC ticket APC-20240315-00847 opened.', src: ['FDC log', 'APC JSON'] },
+  warn:  { title: 'Laser Power Fluctuation — 12:25 PM', text: 'Laser source output dropped to 218W (spec 240±15W). Beam alignment drift of 0.3mm detected. Tool moved to engineering hold pending source inspection.', src: ['sensor JSON', 'shift log'] },
+  ok:    { title: 'System Standby — 12:30 PM', text: 'Tool transitioned to standby after automated safety interlock. FSE dispatched. Estimated recovery time: 2.5h. Adjacent lots rerouted to EUV-03 as backup.', src: ['MES JSON', 'shift log'] }
+};
+
+function showEvent(type) {
+  const el = document.getElementById('event-detail');
+  const d  = eventDetails[type];
+  if (el.dataset.open === type) {
+    el.classList.remove('visible');
+    el.dataset.open = '';
+    return;
+  }
+  el.innerHTML = `<strong>${d.title}</strong><br>${d.text}<br><div class="src-row">${d.src.map(s=>`<span class="src-tag">${s}</span>`).join('')}</div>`;
+  el.classList.add('visible');
+  el.dataset.open = type;
+}
+
+// ── Preset queries (dropdown + autocomplete + pills all use same list) ──
+const PRESET_QUERIES = [
+  {
+    q: 'What caused the laser power fluctuation on EUV-12 last week?',
+    short: 'Laser power fluctuation',
+    badge: 'Laser Power',
+    text: 'The laser power fluctuation on EUV-12 (Mar 8, 12:20 PM) was caused by <strong>tin debris accumulation on the EUV collector mirror</strong>, reducing source output from 240W to 218W — a 9.2% drop below the lower control limit. This triggered a beam alignment drift of 0.3mm, causing dose non-uniformity across the exposure field. The automated safety interlock moved the tool to standby at 12:30 PM. Corrective action: full PM including collector mirror replacement (part ASML-COL-MIR-007), completed by technician K. Watanabe. Tool returned to production at 07:45 AM on 03/15.',
+    src: ['sensor JSON', 'shift log D-shift', 'maintenance XML', 'FDC log']
+  },
+  {
+    q: 'Which lots were affected by the etch rate out of control alert on 03/08/2026?',
+    short: 'Lots affected — etch alarm',
+    badge: 'Etch Rate',
+    text: 'The Etch Rate Out of Control alert on 03/08/2026 at 12:15 PM affected <strong>2 lots: LOT-A2291 (wafers W18–W20) and LOT-A2292 (wafer W01)</strong>. Both were placed on engineering hold pending disposition. LOT-A2291 W18–W20 had CD measurements at 14.82nm vs. 14.00nm target — awaiting process engineer review by T. Nakamura. LOT-A2292 W01 was quarantined due to the CVD-PVD-019 encoder fault occurring mid-transfer during step 142. Rework feasibility assessment is in progress.',
+    src: ['APC alert JSON', 'MES JSON', 'FDC log']
+  },
+  {
+    q: 'What was the root cause of the temperature spike on EUV-12 on 03/09/2026?',
+    short: 'Temperature spike cause',
+    badge: 'Chuck Temp',
+    text: 'The temperature spike alert on 03/09/2026 at 09:45 AM recorded chuck temperature at <strong>-17.2°C vs. the -20°C ±2°C spec</strong>. Root cause: a partial blockage in coolant loop valve PV-12 caused a 12% drop in coolant flow rate (from 4.2 L/min to 3.7 L/min). This reduced heat extraction from the electrostatic chuck, causing the temperature excursion. The coolant loop was flushed and valve PV-12 was cleaned. Temperature returned to nominal (-20.1°C) within 18 minutes. No wafers were in process during the event — no yield impact.',
+    src: ['sensor JSON', 'shift log E-shift', 'maintenance XML']
+  },
+  {
+    q: 'Show me all SPC violations for tool EUV-12 in the last 7 days',
+    short: 'All SPC violations',
+    badge: 'SPC',
+    text: 'SPC violations for <strong>EUV-12 from 03/08/2026 to 03/14/2026</strong>:<br><br>' +
+      '1. <strong>03/08 12:15 PM</strong> — Laser Power: Rule 1 violation (1 point &gt; 3&#963;). Value: 218W. Severity: CRITICAL.<br>' +
+      '2. <strong>03/08 12:20 PM</strong> — CD uniformity: Rule 1 violation. Measured: 14.82nm. Severity: CRITICAL.<br>' +
+      '3. <strong>03/09 09:45 AM</strong> — Chuck Temp: Rule 2 violation (2 of 3 points &gt; 2&#963;). Value: -17.2°C. Severity: WARNING.<br>' +
+      '4. <strong>03/12 02:30 PM</strong> — CD drift: Rule 1 violation. Measured: 14.91nm. Severity: CRITICAL.<br><br>' +
+      'Total: 4 violations (3 Critical, 1 Warning). Recommended action: schedule full PM and source inspection.',
+    src: ['APC alert JSON', 'FDC log', 'MES JSON']
+  },
+  {
+    q: 'What action was taken after the CD drift was detected on 03/12/2026?',
+    short: 'CD drift action',
+    badge: 'CD Drift',
+    text: 'Following the CD drift alert on 03/12/2026 at 02:30 PM (CD = 14.91nm vs. 14.00nm target, USL = 14.50nm):<br><br>' +
+      '1. <strong>Tool EUV-12 quarantined</strong> immediately; 2 in-process lots placed on hold.<br>' +
+      '2. <strong>Root cause identified</strong>: collector mirror reflectivity degraded to 87% of nominal (spec ≥92%) after 3,400 wafer exposures since last PM.<br>' +
+      '3. <strong>PM scheduled</strong> for 03/15/2026 — mirror replacement, dose uniformity recalibration, overlay verification.<br>' +
+      '4. <strong>Lots rerouted</strong> to EUV-03 as backup for continuity.<br>' +
+      '5. Disposition of affected wafers pending CD review by process engineering team.',
+    src: ['APC alert JSON', 'MES JSON', 'maintenance XML', 'shift log']
+  }
+];
+
+// ── Autocomplete ──
+let acHighlight = -1;
+
+function onChatInput(val) {
+  const list = document.getElementById('ac-list');
+  acHighlight = -1;
+  if (!val.trim()) { list.classList.remove('open'); return; }
+  const lower = val.toLowerCase();
+  const matches = PRESET_QUERIES.filter(p =>
+    p.q.toLowerCase().includes(lower) || p.short.toLowerCase().includes(lower)
+  );
+  if (!matches.length) { list.classList.remove('open'); return; }
+  list.innerHTML = matches.map((p, i) =>
+    `<div class="ac-item" data-idx="${i}" onmousedown="pickAC(event, '${p.q.replace(/'/g,"&#39;")}')">
+      <span class="ac-icon">&#128269;</span>
+      <span class="ac-text">${highlight(p.q, val)}</span>
+      <span class="ac-badge">${p.badge}</span>
+    </div>`
+  ).join('');
+  list.classList.add('open');
+}
+
+function highlight(text, q) {
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx < 0) return text;
+  return text.slice(0, idx) + '<strong>' + text.slice(idx, idx + q.length) + '</strong>' + text.slice(idx + q.length);
+}
+
+function pickAC(e, q) {
+  e.preventDefault();
+  document.getElementById('chat-input').value = q;
+  document.getElementById('ac-list').classList.remove('open');
+  document.getElementById('chat-input').focus();
+}
+
+function onChatKeydown(e) {
+  const list = document.getElementById('ac-list');
+  const items = list.querySelectorAll('.ac-item');
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    acHighlight = Math.min(acHighlight + 1, items.length - 1);
+    items.forEach((it, i) => it.classList.toggle('highlighted', i === acHighlight));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    acHighlight = Math.max(acHighlight - 1, -1);
+    items.forEach((it, i) => it.classList.toggle('highlighted', i === acHighlight));
+  } else if (e.key === 'Enter') {
+    if (acHighlight >= 0 && items[acHighlight]) {
+      const q = PRESET_QUERIES.filter(p => {
+        const lower = document.getElementById('chat-input').value.toLowerCase();
+        return p.q.toLowerCase().includes(lower) || p.short.toLowerCase().includes(lower);
+      })[acHighlight];
+      if (q) { document.getElementById('chat-input').value = q.q; }
+      list.classList.remove('open');
+      acHighlight = -1;
+    } else {
+      list.classList.remove('open');
+      sendChat();
+    }
+  } else if (e.key === 'Escape') {
+    list.classList.remove('open');
+    acHighlight = -1;
+  }
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.autocomplete-wrap')) {
+    document.getElementById('ac-list').classList.remove('open');
+  }
+});
+
+// ── Query selector dropdown ──
+function applyQuerySelect() {
+  const sel = document.getElementById('query-select');
+  if (sel.value) document.getElementById('chat-input').value = sel.value;
+}
+function submitQuerySelect() {
+  const sel = document.getElementById('query-select');
+  if (sel.value) {
+    document.getElementById('chat-input').value = sel.value;
+    sendChat();
+    sel.value = '';
+  }
+}
+
+// ── Match response ──
+function matchResponse(q) {
+  const lower = q.toLowerCase();
+  for (const p of PRESET_QUERIES) {
+    if (lower.includes(p.q.toLowerCase().slice(0, 20)) ||
+        p.q.toLowerCase().split(' ').filter(w => w.length > 4).some(w => lower.includes(w))) {
+      return { text: p.text, src: p.src };
+    }
+  }
+  const tool  = document.getElementById('sel-tool').value;
+  const param = document.getElementById('sel-param').value;
+  return {
+    text: `Searching fab data for <em>"${q}"</em> on tool <strong>${tool}</strong>, parameter: <strong>${param}</strong>. Related entries found in sensor logs and shift records. For a precise root cause, include a lot ID or exact timestamp — or pick one of the 5 sample queries above.`,
+    src: ['MES JSON', 'sensor JSON', 'shift log']
+  };
+}
+
+function chatAsk(q) {
+  document.getElementById('chat-input').value = q;
+  document.getElementById('ac-list').classList.remove('open');
+  sendChat();
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  document.getElementById('ac-list').classList.remove('open');
+  document.getElementById('query-select').value = '';
+
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML += `<div class="chat-msg"><div class="chat-msg-av user">You</div><div class="chat-bubble user">${q}</div></div>`;
+
+  const thinkId = 'think-' + Date.now();
+  msgs.innerHTML += `<div class="chat-msg" id="${thinkId}"><div class="chat-msg-av bot">AI</div><div class="chat-bubble bot"><div class="thinking"><div class="td"></div><div class="td"></div><div class="td"></div></div></div></div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  setTimeout(() => {
+    const r = matchResponse(q);
+    const el = document.getElementById(thinkId);
+    if (el) {
+      el.innerHTML = `<div class="chat-msg-av bot">AI</div><div><div class="chat-bubble bot">${r.text}</div><div class="src-row">${r.src.map(s => `<span class="src-tag">${s}</span>`).join('')}</div></div>`;
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1100);
+}
+</script>
+</body>
+</html>
